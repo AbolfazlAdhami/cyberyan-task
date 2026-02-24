@@ -10,7 +10,6 @@ app.use(express.json());
 
 app.use("/api", routes);
 
-// must be LAST
 app.use(errorMiddleware);
 
 export default app;
