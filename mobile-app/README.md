@@ -1,50 +1,77 @@
-# Welcome to your Expo app 👋
+# 📱 Cyberyan Mobile App (Frontend)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is the React Native (Expo) frontend for the Cyberyan VC/DID mock task.
 
-## Get started
+## 🛠 Tech Stack
 
-1. Install dependencies
+- Expo (Managed Workflow)
+- React Native
+- TypeScript
+- Redux Toolkit
+- Expo Router
+- Axios
+- NativeWind
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## 🚀 Installation & Run
 
-   ```bash
-   npx expo start
-   ```
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### 1. Install Dependencies
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+### 3️⃣ Start Development Server
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+npx expo start
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+### 4️⃣ Run the App
 
-Join our community of developers creating universal apps.
+- Press `i` → Run on iOS simulator  
+- Press `a` → Run on Android emulator  
+- Or scan the QR code using **Expo Go**
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+## ⚙️ Backend Requirement
+
+Make sure the backend server is running before using the app.
+
+Update API base URL in:
+
+```
+services/api.ts
+```
+
+Example:
+
+```ts
+baseURL: "http://192.168.1.3:8000/api"
+```
+
+⚠ Do not use `localhost` when testing on a physical device.
+
+---
+
+## 📌 App Flow
+
+1. Register user (name, email, upload images)
+2. Backend returns DID and Verifiable Credential (VC)
+3. Wallet screen displays DID and VC fields
+4. Audit screen shows SHA-256 issuance hash
+
+---
+
+## 📄 Notes
+
+- Image upload is preview-only (mock)
+- JWT authentication handled by backend mock endpoint
+- Backend uses Faker.js for mock data generation
