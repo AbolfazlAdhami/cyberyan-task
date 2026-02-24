@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import QRCode from "react-native-qrcode-svg";
@@ -7,7 +7,7 @@ import { useRouter } from "expo-router";
 
 export default function Wallet() {
   const router = useRouter();
-  const { did, vc } = useSelector((state: RootState) => state.wallet);
+  const { vc, did } = useSelector((state: RootState) => state.wallet);
 
   return (
     <View className="flex-1 bg-gray-50 p-6 items-center">
@@ -19,6 +19,10 @@ export default function Wallet() {
           <QRCode value={JSON.stringify(vc)} size={180} />
         </View>
       )}
+
+      <TouchableOpacity className="bg-purple-600 p-4 rounded-xl my-8 w-full text-center" onPress={() => router.push("/audit")}>
+        <Text className="text-white text-center">Audit</Text>
+      </TouchableOpacity>
     </View>
   );
 }

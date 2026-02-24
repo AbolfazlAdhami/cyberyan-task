@@ -7,12 +7,16 @@ import { setAuditHash } from "../store/wallet.slice";
 
 export default function Audit() {
   const dispatch = useDispatch();
-  const { vc, auditHash } = useSelector((state: RootState) => state.wallet);
+  const { vc, auditHash, token } = useSelector((state: RootState) => state.wallet);
 
   const fetchAudit = async () => {
     if (!vc) return;
-    const res = await api.get(`/audit/${vc.id}`);
-    dispatch(setAuditHash(res.data.hash));
+    try {
+      const res = await api.get(`/audit/${vc.id}`, { headers: { Authorization: `Bearer ${token}` } });
+      dispatch(setAuditHash(res.data.hash));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -21,7 +25,7 @@ export default function Audit() {
         <Text className="text-white text-center font-bold">Generate Audit Hash</Text>
       </TouchableOpacity>
 
-      {auditHash && <Text className="mt-6 text-xs text-gray-700 text-center">{auditHash}</Text>}
+      {auditHash && <Text className="mt-6 text-lg font-bold text-gray-700 text-center">{auditHash}</Text>}
     </View>
   );
 }
