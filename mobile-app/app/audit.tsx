@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store/store";
 import { api } from "@/services/api";
@@ -16,9 +16,12 @@ export default function Audit() {
   };
 
   return (
-    <View style={{ padding: 20 }}>
-      <Button title="Generate Audit Hash" onPress={fetchAudit} />
-      {auditHash && <Text>{auditHash}</Text>}
+    <View className="flex-1 bg-white p-6 justify-center">
+      <TouchableOpacity className="bg-purple-600 p-4 rounded-xl" onPress={fetchAudit}>
+        <Text className="text-white text-center font-bold">Generate Audit Hash</Text>
+      </TouchableOpacity>
+
+      {auditHash && <Text className="mt-6 text-xs text-gray-700 text-center">{auditHash}</Text>}
     </View>
   );
 }
