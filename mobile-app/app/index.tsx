@@ -59,7 +59,7 @@ export default function Register() {
 
       <TextInput placeholder="Name" value={name} onChangeText={setName} className="border border-gray-300 rounded-xl p-4 mb-4" />
 
-      <TextInput placeholder="Email" value={email} onChangeText={setEmail} className="border border-gray-300 rounded-xl p-4 mb-4" />
+      <TextInput placeholder="Email" keyboardType="email-address" value={email} onChangeText={setEmail} className="border border-gray-300 rounded-xl p-4 mb-4" />
 
       <TouchableOpacity className="bg-blue-500 p-4 rounded-xl mb-3" onPress={() => pickImage(setPassport)}>
         <Text className="text-white text-center">Upload Passport</Text>
